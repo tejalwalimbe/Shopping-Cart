@@ -24,7 +24,7 @@ pipeline {
         
         stage('OWASP Scan') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./ ', odcInstallation: 'DP'
+                dependencyCheck additionalArguments: '--scan ./ ', odcInstallation: 'DC'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
@@ -34,8 +34,8 @@ pipeline {
                 withSonarQubeEnv('sonar-scanner') {
                     sh ''' 
                     $SCANNER_HOME/bin/sonar-scanner \
-                    -Dsonar.url=http://13.126.29.152:9000/ \
-                    -Dsonar.login=squ_0c5308610f3737566f8e837d617bbae614387f7f \
+                    -Dsonar.url=http://35.183.103.134:9000/ \
+                    -Dsonar.login=squ_3d7886d71eaeb3d60de9eacfc0ac7368f05b421c \
                     -Dsonar.projectName=Shopping-Cart \
                     -Dsonar.java.binaries=. \
                     -Dsonar.projectKey=Shopping-Cart 
